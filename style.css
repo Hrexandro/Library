@@ -1,0 +1,76 @@
+body {
+    display:flex;
+    flex-direction: column;
+}
+
+
+
+#book-cards{
+    display:flex;
+    flex-direction: row;
+}
+.book-card{
+    width:200px;
+    margin: 20px;
+    border: black 1px solid;
+    border-radius: 10px;
+    text-align: center;
+}
+button{
+    margin-top:10px;
+}
+textarea{
+    width:20%;
+    resize:none;
+}
+
+#new{
+    width:80px;
+}
+
+#forms {
+ text-align:center;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#radioset {
+    height:50px;
+    width: 200px;
+    text-align:center;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+#pages-area{
+    width:20%;
+    height:20px;
+}
+
+#pages-area.unfilled{
+    width:20.1%;
+    height:22px;
+    border: red 1px solid;
+}
+    
+.unfilled{
+    border: red 1px solid;
+}
+    
+.unfilled-radio{
+    color:red;
+}
+
+#removal-button{
+    
+}
