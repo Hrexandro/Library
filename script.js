@@ -1,4 +1,15 @@
+/*
+TO DO:
+
+żeby nie wyskakiwał przycisk toggle read ponizej
+
+*/
+
+
+
 let myLibrary = [];
+
+let ordinal=0;
 
 function book (title, author, pages, read){
     this.title=title;
@@ -14,6 +25,8 @@ function book (title, author, pages, read){
     this.info = function (){
         return `${this.title} by ${this.author}, ${this.pages}. ${this.readDescription}`
     }
+    this.ordinalNumber=ordinal;
+    ordinal++;
   
 }
 
@@ -34,26 +47,36 @@ function displayBook (bookObject){
     bookCard.classList.add('book-card')
     bookCards.appendChild(bookCard);
     bookCard.innerHTML=`
-        <p>Book title: ${bookObject.title}</p>
+        <button class="removal-button">x</button>
+        <p>Title: ${bookObject.title}</p>
         <p>Author: ${bookObject.author}</p>
         <p>Pages: ${bookObject.pages}</p>
-        <p>${bookObject.readDescription}</p>
-        <button class="removal-button">x</button>
+        <button class="mark-read-button">${bookObject.readDescription}</button>
+
+        
     `
-    bookCard.setAttribute("data-position",
-    `${myLibrary.findIndex((book)=>{
-        return  book.title===bookObject.title
-        }
-    )}`
-    )
+    console.log(bookObject.ordinalNumber);
+    bookCard.setAttribute("data-ordinal",`${bookObject.ordinalNumber}`)
+    addRemovalListener(bookCard.getElementsByClassName('removal-button')[0]);//bc it's the only one
+    addReadToggleListener(bookCard.getElementsByClassName('mark-read-button')[0]);
+    
 }   
 let removalButtons= document.getElementsByClassName("removal-button");
 
 let SeventhSon = new book('Seventh Son', "Orson Scott Card", 270, false)
 let PrognozaPogody= new book("Prognoza Pogody", "Disney", 20, true)
+let WojennaKorona= new book("Wojenna Korona", "Elżbieta Cherezińska", 700, false)
 addBookToLibrary(SeventhSon);
 addBookToLibrary(PrognozaPogody);
-
+addBookToLibrary(WojennaKorona);
+//  addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(PrognozaPogody);
 let titleArea = document.getElementById("title-area");
 let authorArea = document.getElementById("author-area");
 let pagesArea = document.getElementById("pages-area");
@@ -112,15 +135,44 @@ newButton.addEventListener('click',()=>{
     }
 })
 
-displayLibrary()
+displayLibrary();
 
-for (i=0;i<removalButtons.length;i++){
-    removalButtons[i].addEventListener('click',(e)=>{
+function addRemovalListener(button){
+    button.addEventListener('click',(e)=>{
         bookCards.removeChild(e.path[1]);
-        console.log(e.path[1])
-        myLibrary.splice(e.path[1].getAttribute('data-position'),1)
+        console.log(e);
+        console.log(e.path[1]);
+        myLibrary.splice(myLibrary.findIndex((obj)=>{
+            return obj.ordinalNumber===e.path[1].getAttribute('data-ordinal')
+        }),1);
+        //myLibrary.splice(e.path[1].getAttribute('data-ordinal'),1)
     })
 }
+
+function addReadToggleListener(button){
+    button.addEventListener('click',(e)=>{
+        console.log(e.path[1].getAttribute('data-ordinal'));
+        let currentBook =  myLibrary.find((obj)=>{
+            return obj.ordinalNumber===Number(e.path[1].getAttribute('data-ordinal'));
+            
+            })
+        console.log(currentBook.read);
+        if (currentBook.read===true){
+            currentBook.read=false;
+        }
+        else {
+            currentBook.read=true;
+        }
+
+        //currentBook.read=(currentBook.read===true) ? true:false;
+        console.log(currentBook.read);
+    }
+    )
+}
+
+// for (i=0;i<removalButtons.length;i++){
+//     addRemovalListener(removalButtons[i]);
+// }
 
 /*
 //TODO
