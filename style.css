@@ -1,7 +1,10 @@
 body {
+    margin:0;
     display:grid;
     grid-template-columns: 1fr 7fr;
     column-gap:0px;
+    height:100vh;
+    background: rgb(33, 146, 140);
 }
 
 
@@ -20,6 +23,7 @@ body {
     border: black 1px solid;
     border-radius: 10px;
     text-align: center;
+    background: bisque;
 
 }
 textarea{
@@ -30,9 +34,16 @@ textarea{
 #new{
     width:80px;
 }
-
+#formbar {
+    padding-left:10px;
+    border-right: solid;
+    height:100%;
+    background: rgb(141, 141, 141);
+    
+}
 #forms {
-
+    top: 5px;
+    position:sticky;
 }
 
 /* Chrome, Safari, Edge, Opera */

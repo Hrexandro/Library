@@ -3,6 +3,14 @@ TO DO:
 
 żeby nie wyskakiwał przycisk toggle read ponizej
 
+change colors depedning on read or not read
+
+sorting
+
+local storage
+
+style
+
 */
 
 
@@ -29,6 +37,16 @@ function book (title, author, pages, read){
     ordinal++;
   
 }
+
+// function checkDescription(bookObject){
+//     if (bookObject.read===true){
+//         bookObject.readDescription= "Has read."
+//     }
+//     else {
+//         bookObject.readDescription= "Has not read."
+//     }
+// }
+
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
@@ -77,6 +95,23 @@ addBookToLibrary(WojennaKorona);
 // addBookToLibrary(PrognozaPogody);
 // addBookToLibrary(PrognozaPogody);
 // addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(SeventhSon);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(WojennaKorona);
+// addBookToLibrary(SeventhSon);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(WojennaKorona);
+//  addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(SeventhSon);
+// addBookToLibrary(PrognozaPogody);
+// addBookToLibrary(WojennaKorona);
 let titleArea = document.getElementById("title-area");
 let authorArea = document.getElementById("author-area");
 let pagesArea = document.getElementById("pages-area");
@@ -157,18 +192,26 @@ function addReadToggleListener(button){
             
             })
         console.log(currentBook.read);
-        if (currentBook.read===true){
-            currentBook.read=false;
-        }
-        else {
-            currentBook.read=true;
-        }
-
-        //currentBook.read=(currentBook.read===true) ? true:false;
+        currentBook.read=!currentBook.read;
         console.log(currentBook.read);
+        console.log(toggleReadDOM(e.path[1]))
+        toggleReadDOM(e.path[1])
+        //checkDescription(e.path[1])//takes DOM of the book card
     }
     )
 }
+
+function toggleReadDOM(bookDOM){
+    let currentBook =  myLibrary.find((obj)=>{
+        return obj.ordinalNumber===Number(bookDOM.getAttribute('data-ordinal'));
+        
+        })
+    console.log(bookDOM)
+    bookDOM.getElementsByClassName("mark-read-button")[0].textContent=(currentBook.read===true) ? "Has read.":"Has not read.";
+}
+
+
+
 
 // for (i=0;i<removalButtons.length;i++){
 //     addRemovalListener(removalButtons[i]);
