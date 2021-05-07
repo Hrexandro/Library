@@ -7,7 +7,9 @@ change colors depedning on read or not read
 
 sorting
 
-local storage
+local storage<---
+
+if read status is changed and saved in the localstorage - the object read status is correctly retained, but the button description does not change!
 
 style
 
@@ -38,14 +40,16 @@ function book (title, author, pages, read){
   
 }
 
-// function checkDescription(bookObject){
-//     if (bookObject.read===true){
-//         bookObject.readDescription= "Has read."
-//     }
-//     else {
-//         bookObject.readDescription= "Has not read."
-//     }
-// }
+function checkDescription(bookObject){
+    if (bookObject.read===true){
+        bookObject.readDescription="Has read."
+    }
+    else {
+        bookObject.readDescription="Has not read."
+    }
+    console.log(bookObject.read)
+    console.log(bookObject.read)
+}
 
 
 function addBookToLibrary(book) {
@@ -82,36 +86,22 @@ function displayBook (bookObject){
 let removalButtons= document.getElementsByClassName("removal-button");
 
 let SeventhSon = new book('Seventh Son', "Orson Scott Card", 270, false)
-let PrognozaPogody= new book("Prognoza Pogody", "Disney", 20, true)
-let WojennaKorona= new book("Wojenna Korona", "Elżbieta Cherezińska", 700, false)
+let Mindhunter= new book("Mindhunter", "John Douglas, Mark Olshaker", 429, false)
+let WojennaKorona= new book("Wojenna Korona", "Elżbieta Cherezińska", 700, true)
 addBookToLibrary(SeventhSon);
-addBookToLibrary(PrognozaPogody);
+addBookToLibrary(Mindhunter);
 addBookToLibrary(WojennaKorona);
-//  addBookToLibrary(PrognozaPogody);
-// addBookToLibrary(PrognozaPogody);
-// addBookToLibrary(PrognozaPogody);
-// addBookToLibrary(PrognozaPogody);
-// addBookToLibrary(PrognozaPogody);
-// addBookToLibrary(PrognozaPogody);
-// addBookToLibrary(PrognozaPogody);
-// addBookToLibrary(PrognozaPogody);
+
 // addBookToLibrary(SeventhSon);
-// addBookToLibrary(PrognozaPogody);
 // addBookToLibrary(WojennaKorona);
 // addBookToLibrary(SeventhSon);
-// addBookToLibrary(PrognozaPogody);
 // addBookToLibrary(WojennaKorona);
-//  addBookToLibrary(PrognozaPogody);
-// addBookToLibrary(PrognozaPogody);
-// addBookToLibrary(PrognozaPogody);
-// addBookToLibrary(PrognozaPogody);
-// addBookToLibrary(PrognozaPogody);
-// addBookToLibrary(PrognozaPogody);
-// addBookToLibrary(PrognozaPogody);
-// addBookToLibrary(PrognozaPogody);
 // addBookToLibrary(SeventhSon);
-// addBookToLibrary(PrognozaPogody);
 // addBookToLibrary(WojennaKorona);
+
+
+
+
 let titleArea = document.getElementById("title-area");
 let authorArea = document.getElementById("author-area");
 let pagesArea = document.getElementById("pages-area");
@@ -167,10 +157,17 @@ newButton.addEventListener('click',()=>{
         removeUncheckedStatuses(titleArea, authorArea, pagesArea, radioBox);
         addBookToLibrary(newBook);
         displayBook (newBook);
+        updateLocalStorage();//add new book to localstorage
+        
     }
+    //localStorage.storedCards=bookCards.innerHTML//store in local storage
+    //localStorage.myLibrary=myLibrary
 })
 
-displayLibrary();
+function updateLocalStorage() {
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary))
+}
+
 
 function addRemovalListener(button){
     button.addEventListener('click',(e)=>{
@@ -180,6 +177,7 @@ function addRemovalListener(button){
         myLibrary.splice(myLibrary.findIndex((obj)=>{
             return obj.ordinalNumber===e.path[1].getAttribute('data-ordinal')
         }),1);
+        updateLocalStorage();
         //myLibrary.splice(e.path[1].getAttribute('data-ordinal'),1)
     })
 }
@@ -193,10 +191,12 @@ function addReadToggleListener(button){
             })
         console.log(currentBook.read);
         currentBook.read=!currentBook.read;
+        checkDescription(currentBook)//makes sure the description matches the read state
         console.log(currentBook.read);
         console.log(toggleReadDOM(e.path[1]))
         toggleReadDOM(e.path[1])
-        //checkDescription(e.path[1])//takes DOM of the book card
+        updateLocalStorage();//update the localstorage also
+        
     }
     )
 }
@@ -209,9 +209,20 @@ function toggleReadDOM(bookDOM){
     console.log(bookDOM)
     bookDOM.getElementsByClassName("mark-read-button")[0].textContent=(currentBook.read===true) ? "Has read.":"Has not read.";
 }
+//localStorage.storedCards=bookCards.innerHTML//store initial in local storage DOES NOT WORK
+//localStorage.myLibrary=myLibrary
 
+//localStorage.setItem('myLibrary', JSON.stringify(myLibrary))
+//bookCards.innerHTML=localStorage.getItem("storedCards")//wypeirdziela [object HTMLDivElement]
 
+if(localStorage.getItem("myLibrary")){//if something has been set in the local storage, then retrieve
+    myLibrary=JSON.parse(localStorage.getItem("myLibrary"))
+}
 
+//console.log(localStorage.getItem("storedCards"))
+
+displayLibrary();
+//console.log(localStorage.getItem("myLibrary"))
 
 // for (i=0;i<removalButtons.length;i++){
 //     addRemovalListener(removalButtons[i]);
