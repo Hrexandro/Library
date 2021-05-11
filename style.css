@@ -17,26 +17,56 @@ body {
 #book-cards{
     /* margin: 30px 30px 30px 30px; */
     display:grid;
-    grid-template-columns: repeat(5, 1fr);
-    row-gap: 80px;
-    column-gap:80px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 300px));
+    row-gap: 30px;
+    column-gap:40px;
 }
 
 .book-card{
     /* height:160px;*/
-    margin: 10px;
+    margin: 20px;
     /* border: black 1px solid;*/
     border-radius: 10px; 
     text-align: center;
     background: white;
     color:#1a6180;
-
+    animation: slide-up 0.4s ease;
+    transition: all 0.2s ease;
 
 }
+
+.book-card.disappearing {
+    transform: translateY(20px);
+    opacity:0;
+}
+
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* @keyframes slide-down {
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} */
+
 
 
 #new{
     width:80px;
+    margin-top:30px;
     padding:3px;
     background:white;
     border: none;

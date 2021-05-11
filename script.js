@@ -12,7 +12,9 @@ zamień textare'y na inputy
 style
 sources:
 external code:
-https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp
+https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp - hide arrow next to number field
+https://codeburst.io/animating-dynamically-created-elements-pure-css-c864fdb6e366 - dynamically appearing bookcards
+- to  delete, add the class with reverse transition effect before deleting
 
 background:
 <a href="https://www.freepik.com/photos/background">Background photo created by kues - www.freepik.com</a> squared-paper-texture
@@ -175,14 +177,22 @@ function updateLocalStorage() {
 
 function addRemovalListener(button){
     button.addEventListener('click',(e)=>{
-        bookCards.removeChild(e.path[1]);
-        console.log(e);
-        console.log(e.path[1]);
+        let DOMholder=e.path[1]//holds the DOM to be able to refer to it in the transitionend event
+        e.path[1].addEventListener('transitionend',(e)=>{//make sure the DOM is removed only after the transition ends
+            bookCards.removeChild(DOMholder);
+        })
+        e.path[1].classList.add('disappearing')//causes the transition
+        // bookCards.removeChild(e.path[1]);
         myLibrary.splice(myLibrary.findIndex((obj)=>{
             return obj.ordinalNumber===e.path[1].getAttribute('data-ordinal')
         }),1);
         updateLocalStorage();
+
+
+
         //myLibrary.splice(e.path[1].getAttribute('data-ordinal'),1)
+        // console.log(e);
+        // console.log(e.path[1]);
     })
 }
 
