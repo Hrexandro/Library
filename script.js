@@ -7,12 +7,16 @@ change colors depedning on read or not read
 
 sorting
 
-local storage<---
-
-if read status is changed and saved in the localstorage - the object read status is correctly retained, but the button description does not change!
+zamień textare'y na inputy
 
 style
+sources:
+external code:
+https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp
 
+background:
+<a href="https://www.freepik.com/photos/background">Background photo created by kues - www.freepik.com</a> squared-paper-texture
+<a href="https://www.vecteezy.com/free-vector/lines">Lines Vectors by Vecteezy</a>free-squared-paper-vector
 */
 
 
@@ -69,7 +73,7 @@ function displayBook (bookObject){
     bookCard.classList.add('book-card')
     bookCards.appendChild(bookCard);
     bookCard.innerHTML=`
-        <button class="removal-button">x</button>
+        <button class="removal-button">x</button><br>
         <p>Title: ${bookObject.title}</p>
         <p>Author: ${bookObject.author}</p>
         <p>Pages: ${bookObject.pages}</p>
