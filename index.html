@@ -10,12 +10,23 @@
 <body>
     <div id="formbar">
         <div id="forms">
-            <p>Book title</p>
-            <textarea class="area" id="title-area"></textarea><br>
-            <p>Author</p>
-            <textarea class="area" id="author-area"></textarea><br>
-            <p>Number of pages</p>
-            <input class="area" type='number' id='pages-area'></input>
+            <!-- <p>Book title</p> -->
+            <!-- <textarea class="area" id="title-area"></textarea><br> -->
+            <br>
+            <br>
+            <input class="area" type='text' id="title-area" maxlength = "34" required></input>
+            <span class="placeholder" id="title-placeholder">Book title</span>
+            <!-- <p>Author</p> -->
+            <!-- <textarea class="area" id="author-area"></textarea><br> -->
+            <br>
+            <br>
+            <input class="area" type='text' id="author-area" maxlength = "34" required></input>
+            <span class="placeholder" id="author-placeholder">Author</span>
+            <!-- <p>Number of pages</p> -->
+            <br>
+            <br>
+            <input class="area" type='number' id='pages-area' maxlength = "12" required></input>
+            <span class="placeholder" id="pages-placeholder">Pages</span>
             <p>Have you read it?</p>
             <form id="radioset">
             <input class="readingcheck" type="radio" id="read" name="read-status" value="read">

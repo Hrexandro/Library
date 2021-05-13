@@ -1,13 +1,9 @@
 /*
 TO DO:
 
-żeby nie wyskakiwał przycisk toggle read ponizej
-
 change colors depedning on read or not read
-
 sorting
 
-zamień textare'y na inputy
 
 style
 sources:
@@ -159,7 +155,7 @@ newButton.addEventListener('click',()=>{
         return;
     }
     else if (!somethingMissing){
-        let newBook = new book(`${titleArea.value}`, `${authorArea.value}`, `${pagesArea.value}`, radio);
+        let newBook = new book(`${titleArea.value}`, `${authorArea.value}`, `${Number(pagesArea.value)}`, radio);
         removeUncheckedStatuses(titleArea, authorArea, pagesArea, radioBox);
         addBookToLibrary(newBook);
         displayBook (newBook);
