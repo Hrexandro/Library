@@ -34,7 +34,22 @@
             <input class="readingcheck" type="radio" id="notread" name="read-status" value="notread">
             <label for="notread">No</label><br>
             </form>
-            <button id="new">New Book</button>
+            <button id="new">New Book</button><br>
+            <button id="title-sorter">sort by title</button><br>
+            <button id="title-sorter-reverse">sort by title reverse</button><br>
+
+            <label for="sort">Sort cards by:</label><br>
+            <select name="sort" id="sort">
+                <option value="title">title</option>
+                <option value="author">author</option>
+                <option value="insertion">insertion</option>
+                <option value="length">length</option>
+                <option value="read-status">read status</option>
+              </select>
+              <select name="order" id="order">
+                <option value="ascending">ascending</option>
+                <option value="descending">descending</option>
+              </select>
         </div>
     </div>
     <div id="card-background">
