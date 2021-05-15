@@ -2,7 +2,8 @@
 TO DO:
 
 change colors depedning on read or not read
-sorting
+style sorting
+sorting by author last name
 on top 'my library' & icon
 
 books read: liczba
@@ -10,8 +11,7 @@ books unread: liczba
 total books: liczba
 
 bugs:
-sorting is wrong, does not sort properly, probably fault of sortBy() function
-used to work with only alphabeticals, now doesn't work with either
+
 
 
 style
@@ -140,93 +140,60 @@ let radioBox = document.getElementById("radioset");
 let titleSorter = document.getElementById("title-sorter");
 let titleSorterReverse = document.getElementById("title-sorter-reverse");
 let sortSelect = document.getElementById("sort");
-// let orderSelect = document.getElementById("order");
+let orderSelect = document.getElementById("order");
 const readingcheck = document.querySelector('#readingcheck')
 
-function compareAlphabetically(a,b) {//works!
-    return a["title"].localeCompare(b["title"]);
+// function compareAlphabetically(a,b) {//works!
+//     return a[`${attribute}`].localeCompare(b[`${attribute}`];
+
+// }
+
+function sortBy (attribute){
+    console.log(attribute)
+    function compareAlphabetically(a,b) {
+        return a[`${attribute}`].localeCompare(b[`${attribute}`]);
+
+    }
+    function compareNumbers(a,b){
+        return Number(a[`${attribute}`])-Number(b[`${attribute}`]);
+    }
+    if (attribute==="pages"||attribute==="ordinalNumber"){
+        myLibrary.sort(compareNumbers);
+    }
+    else {
+        myLibrary.sort(compareAlphabetically);
+
+    }
+    if (orderChoice==="descending"){
+        myLibrary.reverse();
+    }
 
 }
-titleSorter.addEventListener('click',(e)=>{
-    console.table(myLibrary)
-    myLibrary.sort(compareAlphabetically);
-    console.table(myLibrary);
-    recreateBookCards();
-})
-titleSorterReverse.addEventListener('click',(e)=>{
-    console.table(myLibrary)
-    myLibrary.sort(compareAlphabetically);
-    myLibrary.reverse();
-    console.table(myLibrary);
-    recreateBookCards();
-})
 
-let choice="title" //sort by what  ///for some reason this does not work, trying again from the start
-// let orderChoice="ascending" //ascending or descending
+
+
+let choice="title" //sort by what  
+let orderChoice="ascending" //ascending or descending
 
 sortSelect.addEventListener('change',(e)=>{
     choice=e.target.value;
     console.log(choice)
-    // chooseSorting(choice);
+
+    sortBy(choice);
+
+    recreateBookCards();
+
+
+
 })
 
-// function chooseSorting (chosen){
-//     console.log(chosen)
-//     if (chosen==="title"){
-//         sortBy('title')
-//     }
-//     else if (chosen==="author"){//work it so that the last name is selected
-//         sortBy('author')
-//     }
-//     else if (chosen==="insertion"){
-//         sortBy('ordinalNumber')
-//     }
-//     else if (chosen==="length"){
-//         sortBy('pages')
-//     }
-    
-//     if (orderChoice==="descending"){
-//         myLibrary.reverse();
-//     }
-//     recreateBookCards();
+orderSelect.addEventListener('change',(e)=>{
+    orderChoice=e.target.value
+    sortBy(choice);
 
-// }
+    recreateBookCards();
+})
 
-// orderSelect.addEventListener('change',(e)=>{//if order is descending, does the regular sorting and reverses
-//     orderChoice=e.target.value
-//     chooseSorting(choice);
-//     if (orderChoice==="descending"){
-//         myLibrary.reverse();
-//     }
-//     recreateBookCards();
-// })
-
-
-
-// function sortBy (attribute){
-//     console.log(attribute)
-//     // function compareNumbers(a,b){
-//         //     console.log(Number(b[`${attribute}`]));
-//     //     return Math.max(Number(a[`${attribute}`]),Number(b[`${attribute}`]));
-//     // }
-//     function compareAlphabetically(a,b) {
-//         console.log("first attribute"+a[`${attribute}`])
-//         console.log("second attribute"+b[`${attribute}`])
-//         return a[`${attribute}`].localeCompare(b[`${attribute}`]);
-
-//     }
-
-    
-//     // if (attribute==="pages"||attribute==="ordinalNumber"){
-//         //     console.log('compares numbers')
-//         //     myLibrary.sort(compareNumbers)
-//         // }
-//         // else {
-//             //     myLibrary.sort(compareAlphabetically)
-//             // }
-//             myLibrary.sort(compareAlphabetically)
-//             // myLibrary.sort();
-//         }
         
 function recreateBookCards () {
     clearBookCards();
