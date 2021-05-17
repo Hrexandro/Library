@@ -11,7 +11,7 @@ books unread: liczba
 total books: liczba
 
 bugs:
-
+if i change sorting than switch to author it sorts cherezinska before card, but otherwise worx correctly
 
 
 style
@@ -152,15 +152,25 @@ function sortBy (attribute){
     console.log(attribute)
     function compareAlphabetically(a,b) {
         return a[`${attribute}`].localeCompare(b[`${attribute}`]);
-
     }
     function compareNumbers(a,b){
         return Number(a[`${attribute}`])-Number(b[`${attribute}`]);
     }
-    if (attribute==="pages"||attribute==="ordinalNumber"){
+    function compareLastNameAlphabetically(a,b){//first letter after the last space before the comma
+        return findLastName(a[`${attribute}`]).localeCompare(findLastName(b[`${attribute}`]));
+    }
+    if (attribute==="select"){
+        return
+    }
+    else if (attribute==="pages"||attribute==="ordinalNumber"){
         myLibrary.sort(compareNumbers);
     }
+    else if (attribute==="author"){
+        console.log("lastnames-should work")
+        myLibrary.sort(compareLastNameAlphabetically);
+    }
     else {
+        console.log("notlastnames")
         myLibrary.sort(compareAlphabetically);
 
     }
@@ -169,7 +179,18 @@ function sortBy (attribute){
     }
 
 }
-
+function findLastName(string){//find the first capital letter after the last space before the comma (multiple authors), or the first capital letter after the last space, or first letter (one word names)
+    let regex=/(?<=\s)([A-Z]).*(?=\,)/;
+    if (string.match(regex)){
+        return string.match(regex)[0]//returns an object, the index 1 is the actual letter
+    }
+    for (i=string.length;i>0;i--){     
+        if (string[i]===" "){
+            return string.slice(i+1);
+        }
+    }
+    return string;
+}
 
 
 let choice="title" //sort by what  
@@ -178,19 +199,13 @@ let orderChoice="ascending" //ascending or descending
 sortSelect.addEventListener('change',(e)=>{
     choice=e.target.value;
     console.log(choice)
-
     sortBy(choice);
-
     recreateBookCards();
-
-
-
 })
 
 orderSelect.addEventListener('change',(e)=>{
     orderChoice=e.target.value
     sortBy(choice);
-
     recreateBookCards();
 })
 
