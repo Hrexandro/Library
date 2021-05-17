@@ -9,6 +9,11 @@ body {
     /* background-image: url("images/free-squared-paper-vector.jpg"); */
 }
 
+
+#counters{
+    position: absolute;
+    top:85vh;
+}
 #card-background{
     background: #f8d14c;
 }
@@ -62,16 +67,34 @@ body {
     }
 } */
 
+#book-icon{
+    width:30%;
+}
 
+h1{
+    display: flex;
+    align-items:center;
+    font-family:bitter, sans-serif;
+}
 
 #new{
     width:80px;
-    margin-top:30px;
+    margin-top:20px;
     padding:3px;
     background:white;
     border: none;
     border-radius:21px;;
     color:#1a6180;
+}
+
+select{
+    margin-top:5px;
+    padding:3px;
+    background:white;
+    border: none;
+    border-radius:21px;;
+    color:#1a6180;
+    outline: none;
 }
 #formbar {
     padding-left:10px;
@@ -144,7 +167,9 @@ input:valid+.placeholder{
 
 }
 
-
+#sorting{
+    margin-top:30px;
+}
 
 #pages-area{
     width:40%;

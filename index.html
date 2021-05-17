@@ -4,15 +4,18 @@
     <meta charset="utf-8">
     <title>Library</title>
     <link href="style.css" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/book.png">
 
 </head>
 <body>
     <div id="formbar">
         <div id="forms">
+            <h1><img id="book-icon" src="images/book.png"></img>MY LIBRARY</h1>
             <!-- <p>Book title</p> -->
             <!-- <textarea class="area" id="title-area"></textarea><br> -->
-            <br>
+           
             <br>
             <input class="area" type='text' id="title-area" maxlength = "34" required></input>
             <span class="placeholder" id="title-placeholder">Book title</span>
@@ -37,7 +40,7 @@
             <button id="new">New Book</button><br>
             <br>
             <br>
-
+            <div id="sorting">
             <label for="sort">Sort cards by:</label><br>
             <select name="sort" id="sort">
                 <option selected disabled hidden style='display: none'>select</option>
@@ -52,6 +55,12 @@
                 <option value="ascending">ascending</option>
                 <option value="descending">descending</option>
               </select>
+            </div>
+             <div id="counters">
+              <p>Books read:<span id="read-book-counter"></span></p>
+              <p>Books unread:<span id="unread-book-counter"></span></p>
+              <p>Total books:<span id="book-counter"></span></p>
+            </div>
         </div>
     </div>
     <div id="card-background">

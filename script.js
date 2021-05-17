@@ -2,16 +2,13 @@
 TO DO:
 
 change colors depedning on read or not read
-style sorting
-sorting by author last name
-on top 'my library' & icon
 
 books read: liczba
 books unread: liczba
 total books: liczba
 
 bugs:
-if i change sorting than switch to author it sorts cherezinska before card, but otherwise worx correctly
+
 
 
 style
@@ -21,9 +18,15 @@ https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp - hide arrow nex
 https://codeburst.io/animating-dynamically-created-elements-pure-css-c864fdb6e366 - dynamically appearing bookcards
 
 
+books icon
+<div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+fonts
+
+	<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500&display=swap" rel="stylesheet">
+
 background:
-<a href="https://www.freepik.com/photos/background">Background photo created by kues - www.freepik.com</a> squared-paper-texture
-<a href="https://www.vecteezy.com/free-vector/lines">Lines Vectors by Vecteezy</a>free-squared-paper-vector
+
 */
 
 
