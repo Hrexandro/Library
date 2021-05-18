@@ -1,5 +1,9 @@
 /*
 TO DO:
+readme:
+mention sorting and counting and localstorage
+
+
 
 change colors depedning on read or not read
 
@@ -7,7 +11,7 @@ books read: liczba
 books unread: liczba
 total books: liczba
 
-resize my library and the icon when smaller screen 
+resize "my library" and the icon when smaller screen 
 icon is very big on phone
 
 bugs:
@@ -186,7 +190,7 @@ function sortBy (attribute){
 
 }
 function findLastName(string){//find the first capital letter after the last space before the comma (multiple authors), or the first capital letter after the last space, or first letter (one word names)
-    let regex=/(?<=\s)([A-Z]).*(?=\,)/;
+    let regex=/(?<=\s)([a-zA-Z]).*(?=\,)/;
     if (string.match(regex)){
         return string.match(regex)[0]//returns an object, the index 1 is the actual letter
     }
@@ -272,7 +276,7 @@ newButton.addEventListener('click',()=>{
         addBookToLibrary(newBook);
         displayBook (newBook);
         updateLocalStorage();//add new book to localstorage
-        
+        updateCounters();
     }
     //localStorage.storedCards=bookCards.innerHTML//store in local storage
     //localStorage.myLibrary=myLibrary
@@ -300,7 +304,7 @@ function addRemovalListener(button){
             return obj.ordinalNumber===Number(DOMholder.getAttribute('data-ordinal'))
         }),1);
         updateLocalStorage();
-
+        updateCounters();
 
 
         //myLibrary.splice(e.path[1].getAttribute('data-ordinal'),1)
@@ -313,7 +317,7 @@ function addReadToggleListener(button){
     button.addEventListener('click',(e)=>{
         console.log(e.path[1].getAttribute('data-ordinal'));
         let currentBook =  myLibrary.find((obj)=>{
-            return obj.ordinalNumber===Number(e.path[1].getAttribute('data-ordinal'));
+            return obj.ordinalNumber==Number(e.path[1].getAttribute('data-ordinal'));
             
             })
         console.log(currentBook.read);
@@ -323,6 +327,7 @@ function addReadToggleListener(button){
         console.log(toggleReadDOM(e.path[1]))
         toggleReadDOM(e.path[1])
         updateLocalStorage();//update the localstorage also
+        updateCounters();
         
     }
     )
@@ -330,7 +335,7 @@ function addReadToggleListener(button){
 
 function toggleReadDOM(bookDOM){
     let currentBook =  myLibrary.find((obj)=>{
-        return obj.ordinalNumber===Number(bookDOM.getAttribute('data-ordinal'));
+        return obj.ordinalNumber==Number(bookDOM.getAttribute('data-ordinal'));
         
         })
     console.log(bookDOM)
@@ -352,13 +357,25 @@ ordinal= myLibrary.reduce((currentMax,checked)=>{//makes sure ordinals do not re
         return Math.max(currentMax,checked.ordinalNumber);
 },0)
 
+function updateCounters(){
+    let readCounter = document.getElementById("read-book-counter");
+    let unreadCounter = document.getElementById("unread-book-counter");
+    let bookCounter = document.getElementById("book-counter");
+    readCounter.textContent=` ${myLibrary.filter((book)=>{return book.read===true}).length}`;
+    unreadCounter.textContent=` ${myLibrary.filter((book)=>{return book.read===false}).length}`;
+    bookCounter.textContent=` ${myLibrary.length}`;
+}
 
 
 
+            //   <p>Books read:<span id="read-book-counter"></span></p>
+            //   <p>Books unread:<span id="unread-book-counter"></span></p>
+            //   <p>Total books:<span id="book-counter"></span></p>
 
 //console.log(localStorage.getItem("storedCards"))
 
 displayLibrary();
+updateCounters();
 //console.log(localStorage.getItem("myLibrary"))
 
 // for (i=0;i<removalButtons.length;i++){
