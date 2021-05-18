@@ -7,6 +7,9 @@ books read: liczba
 books unread: liczba
 total books: liczba
 
+resize my library and the icon when smaller screen 
+icon is very big on phone
+
 bugs:
 
 
@@ -283,13 +286,18 @@ function updateLocalStorage() {
 function addRemovalListener(button){
     button.addEventListener('click',(e)=>{
         let DOMholder=e.path[1]//holds the DOM to be able to refer to it in the transitionend event
-        e.path[1].addEventListener('transitionend',(e)=>{//make sure the DOM is removed only after the transition ends
+        console.log(DOMholder)
+        console.log(DOMholder.getAttribute('data-ordinal'))
+        console.log(myLibrary.findIndex((obj)=>{
+                return obj.ordinalNumber===Number(DOMholder.getAttribute('data-ordinal'))
+            }))
+        DOMholder.addEventListener('transitionend',(e)=>{//make sure the DOM is removed only after the transition ends
             bookCards.removeChild(DOMholder);
         })
-        e.path[1].classList.add('disappearing')//causes the transition
+        DOMholder.classList.add('disappearing')//causes the transition
         // bookCards.removeChild(e.path[1]);
         myLibrary.splice(myLibrary.findIndex((obj)=>{
-            return obj.ordinalNumber===e.path[1].getAttribute('data-ordinal')
+            return obj.ordinalNumber===Number(DOMholder.getAttribute('data-ordinal'))
         }),1);
         updateLocalStorage();
 
