@@ -1,16 +1,15 @@
-@font-face {
+/* @font-face {
     font-family: 'linux_libertine_displayRg';
     src: url('linlibertine_drah-webfont.woff2') format('woff2'),
          url('linlibertine_drah-webfont.woff') format('woff');
-    /* src: url('LinLibertine_DRah.ttf') format('ttf'); */
     font-weight: normal;
     font-style: normal;
 
-}
+} */
 
 @font-face {
     font-family: 'Noto Sans Symbols 2';
-    src: url('fonts/NotoSansSymbols2-Regular.ttf') format('ttf');
+    src: url('fonts/NotoSansSymbols2-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 
@@ -25,7 +24,7 @@ body {
     /* background: rgb(53, 53, 53); */
     /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
     /* font-family: "linux_libertine_displayRg", "Linux Libertine","Linux Libertine Display",Helvetica, Arial, sans-serif; */
-    font-family: 'linux_libertine_displayRg','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, 'Noto Sans Symbols 2';
+    font-family:'Noto Sans Symbols 2';
 
     /* background-image: url("images/free-squared-paper-vector.jpg"); */
 }
@@ -34,6 +33,7 @@ body {
 #counters{
     position: absolute;
     top:85vh;
+    margin-top:10px;
 }
 #card-background{
     background: #f8d14c;
