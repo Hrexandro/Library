@@ -6,6 +6,7 @@
     <link href="style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500&display=swap" rel="stylesheet">
+    <link href="fonts/LinLibertine_DRah.ttf" rel="stylesheet">
     <link rel="icon" href="images/book.png">
 
 </head>
@@ -32,10 +33,8 @@
             <span class="placeholder" id="pages-placeholder">Pages</span>
             <p>Have you read it?</p>
             <form id="radioset">
-            <input class="readingcheck" type="radio" id="read" name="read-status" value="read">
-            <label for="read">Yes</label>
-            <input class="readingcheck" type="radio" id="notread" name="read-status" value="notread">
-            <label for="notread">No</label><br>
+            <input class="readingcheck" type="radio" id="read" name="read-status" value="read"><label for="read">Yes</label><br>
+            <input class="readingcheck" type="radio" id="notread" name="read-status" value="notread"><label for="notread">No</label><br>
             </form>
             <button id="new">New Book</button><br>
             <br>
@@ -56,7 +55,7 @@
                 <option value="descending">descending</option>
               </select>
             </div>
-            <p id="info">🛈 description</p>
+            <p id="info">🛈ⓘ description</p>
             <p id="description">This library app lets you store and modify a list of books, 
                 toggle their status as read or unread and sort them according to various criteria. 
                 It maintains a count of all the books in real-time and uses Local Storage to store the data for future use.

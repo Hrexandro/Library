@@ -1,4 +1,12 @@
+@font-face {
+    font-family: 'linux_libertine_displayRg';
+    /* src: url('linlibertine_drah-webfont.woff2') format('woff2'),
+         url('linlibertine_drah-webfont.woff') format('woff'); */
+    src: url('LinLibertine_DRah.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
 
+}
 
 body {
     margin:0;
@@ -7,7 +15,10 @@ body {
     column-gap:0px;
     height:100vh; 
     /* background: rgb(53, 53, 53); */
-    
+    /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    /* font-family: "linux_libertine_displayRg", "Linux Libertine","Linux Libertine Display",Helvetica, Arial, sans-serif; */
+    font-family: 'linux_libertine_displayRg','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
     /* background-image: url("images/free-squared-paper-vector.jpg"); */
 }
 
