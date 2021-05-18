@@ -68,13 +68,14 @@ body {
 } */
 
 #book-icon{
-    width:30%;
+    width:4vw;
 }
 
 h1{
     display: flex;
     align-items:center;
     font-family:bitter, sans-serif;
+    font-size:1.65vw;
 }
 
 #new{
