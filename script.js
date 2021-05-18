@@ -3,16 +3,12 @@ TO DO:
 readme:
 mention sorting and counting and localstorage
 
-
+check scaling description on phone
 
 change colors depedning on read or not read
 
-books read: liczba
-books unread: liczba
-total books: liczba
+clear content of forms after adding a book
 
-resize "my library" and the icon when smaller screen 
-icon is very big on phone
 
 bugs:
 
