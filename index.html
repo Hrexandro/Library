@@ -15,7 +15,7 @@
             <h1><img id="book-icon" src="images/book.png" alt="books"></img>MY LIBRARY</h1>
             <!-- <p>Book title</p> -->
             <!-- <textarea class="area" id="title-area"></textarea><br> -->
-           
+           <p id="links">made by <a href="https://github.com/Hrexandro">Hrexandro</a> | <a href="https://github.com/Hrexandro/Library">Source</a></p>
             <br>
             <input class="area" type='text' id="title-area" maxlength = "34" required></input>
             <span class="placeholder" id="title-placeholder">Book title</span>
@@ -56,6 +56,11 @@
                 <option value="descending">descending</option>
               </select>
             </div>
+            <p id="info">🛈 description</p>
+            <p id="description">This library app lets you store and modify a list of books, 
+                toggle their status as read or unread and sort them according to various criteria. 
+                It maintains a count of all the books in real-time and uses Local Storage to store the data for future use.
+            </p>
              <div id="counters">
               <p>Books read:<span id="read-book-counter"></span></p>
               <p>Books unread:<span id="unread-book-counter"></span></p>
