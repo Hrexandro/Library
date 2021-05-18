@@ -1,19 +1,13 @@
-/* @font-face {
-    font-family: 'linux_libertine_displayRg';
-    src: url('linlibertine_drah-webfont.woff2') format('woff2'),
-         url('linlibertine_drah-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
 
-} */
 
 @font-face {
     font-family: 'Noto Sans Symbols 2';
     src: url('fonts/NotoSansSymbols2-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-
 }
+
+
 
 body {
     margin:0;
@@ -22,9 +16,7 @@ body {
     column-gap:0px;
     height:100vh; 
     /* background: rgb(53, 53, 53); */
-    /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
-    /* font-family: "linux_libertine_displayRg", "Linux Libertine","Linux Libertine Display",Helvetica, Arial, sans-serif; */
-    font-family:'Noto Sans Symbols 2';
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, 'Noto Sans Symbols 2'; 
 
     /* background-image: url("images/free-squared-paper-vector.jpg"); */
 }
@@ -33,7 +25,7 @@ body {
 #counters{
     position: absolute;
     top:85vh;
-    margin-top:10px;
+
 }
 #card-background{
     background: #f8d14c;
@@ -41,21 +33,29 @@ body {
 
 #info{
     font-size:17px;
-    
+    margin-top:3px;
+}
+
+#spacer{
+    margin-top:10px;
+    height:15vh;
+    width:10px;
 }
 
 
 #description{
-    visibility: hidden;
+
+    opacity:0;
 }
 
-#info:hover ~ #description{
-    visibility: visible;
+#info:hover + #description{
+    opacity:1;
+    /* visibility: visible; */
     pointer-events: none;
     text-align:justify;
     padding:20px;
     margin-right:10px;
-
+    display:block;
     background: white;
     border-radius: 10px;
     color:#1a6180;
@@ -154,6 +154,11 @@ select{
     border-radius:21px;;
     color:#1a6180;
     outline: none;
+
+    -moz-appearance: none; 
+    /* check if this avoids the ugly arrow in firefox */
+    text-indent: 1px;
+    text-overflow: '';
 }
 #formbar {
     padding-left:10px;
@@ -229,7 +234,7 @@ input:valid+.placeholder{
 }
 
 #sorting{
-    margin-top:30px;
+    margin-top:10px;
 }
 
 #pages-area{

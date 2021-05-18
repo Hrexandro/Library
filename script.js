@@ -27,7 +27,7 @@ external code:
 https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp - hide arrow next to number field
 https://codeburst.io/animating-dynamically-created-elements-pure-css-c864fdb6e366 - dynamically appearing bookcards
 
-http://libertine-fonts.org/ - font
+https://github.com/googlefonts/noto-fonts- font
 books icon
 <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
