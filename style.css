@@ -1,8 +1,8 @@
 @font-face {
     font-family: 'linux_libertine_displayRg';
-    /* src: url('linlibertine_drah-webfont.woff2') format('woff2'),
-         url('linlibertine_drah-webfont.woff') format('woff'); */
-    src: url('LinLibertine_DRah.ttf') format('ttf');
+    src: url('linlibertine_drah-webfont.woff2') format('woff2'),
+         url('linlibertine_drah-webfont.woff') format('woff');
+    /* src: url('LinLibertine_DRah.ttf') format('ttf'); */
     font-weight: normal;
     font-style: normal;
 
