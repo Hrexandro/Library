@@ -259,7 +259,6 @@ input:valid+.placeholder{
 }
 
 .mark-read-button, .removal-button {
-    display:block;
     float:right;
     margin:5px;
     background: none;
@@ -269,6 +268,8 @@ input:valid+.placeholder{
 
 }
 .mark-read-button{
+    position:relative;
+
     font-size:small;
     outline: none;
     transition: all 0.3s ease-in;
