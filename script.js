@@ -221,29 +221,25 @@ const newButton = document.getElementById("new")
 
 let somethingMissing;
 
-function filledChecker (){
+function filledChecker (){//for all inputs
     let areas = document.querySelectorAll(".area")
     for (i=0;i<areas.length;i++){
-        if (areas[i].value===""){
-            areas[i].classList.add("unfilled")
-            somethingMissing=true;
-        }
-        else {
-            areas[i].classList.remove("unfilled");
-        }
-
+        currentInputElementChecker(areas[i])
     }
-    if (!readYes.checked&&!readNo.checked){
-        document.getElementById("radioset").classList.add("unfilled-radio");
-        somethingMissing=true;
-    }
-    else {
-        radioBox.classList.remove("unfilled-radio");
-    }
+    currentInputElementChecker(radioBox)
 }
 
 function currentInputElementChecker(element){//use with the event below to ensure input fields are checked themselves upon losing focus
-    if (element.value===""){
+    if (element===radioBox) {
+        if (!readYes.checked&&!readNo.checked){
+            document.getElementById("radioset").classList.add("unfilled-radio");
+            somethingMissing=true;
+        }
+        else {
+            radioBox.classList.remove("unfilled-radio");
+        }
+    }
+    else if (element.value===""){
         element.classList.add("unfilled")
         somethingMissing=true;
     }
@@ -260,7 +256,7 @@ document.querySelectorAll("input").forEach(element => {
 
 
 radioBox.addEventListener('click',()=>{
-    filledChecker();
+    currentInputElementChecker(radioBox);
 })
 
 function clearFormFields(){
