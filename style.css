@@ -46,7 +46,7 @@ body {
 
 #info:hover + #description{
     opacity:1;
-    font-size:0.85vw;
+    font-size:0.85vmax;
     /* visibility: visible; */
     pointer-events: none;
     text-align:justify;
@@ -141,6 +141,7 @@ h1{
     border: none;
     border-radius:21px;;
     color:#1a6180;
+    outline: none;
 }
 
 select{
@@ -227,8 +228,10 @@ input:valid+.placeholder{
     position:absolute;
     left:0;
     transform: scale(0.9) translateY(-19px);
+    color: white;
+    
 
-}
+}   
 
 #sorting{
     margin-top:10px;
@@ -239,14 +242,16 @@ input:valid+.placeholder{
     height:20px;
 }
 
-#pages-area.unfilled{
-    /* width:28.1%; */
-    height:22px;
-    border: red 1px solid;
+
+
+
+.unfilled+.placeholder{
+    color: red;
 }
+
     
 .unfilled{
-    border: red 1px solid;
+    border-bottom: red 1px dotted !important;
 }
     
 .unfilled-radio{

@@ -7,15 +7,9 @@ check scaling description on phone
 
 change colors depedning on read or not read
 
-clear content of forms after adding a book
-
-
 bugs:
 
-(i) nie działa na widowsie - co z czcionkami
 
-żeby jak małe nie nachodziły na siebie countery na form
-i żeby popup nie wychodził na countery też
 
 style
 sources:
@@ -125,17 +119,11 @@ let removalButtons= document.getElementsByClassName("removal-button");
 
 let SeventhSon = new book('Seventh Son', "Orson Scott Card", 270, false)
 let Mindhunter= new book("Mindhunter", "John Douglas, Mark Olshaker", 429, false)
-let WojennaKorona= new book("Wojenna Korona", "Elżbieta Cherezińska", 700, true)
+let AGameOfThrones= new book("A Game of Thrones", "George R.R. Martin", 801, true)
 addBookToLibrary(SeventhSon);
 addBookToLibrary(Mindhunter);
-addBookToLibrary(WojennaKorona);
+addBookToLibrary(AGameOfThrones);
 
-// addBookToLibrary(SeventhSon);
-// addBookToLibrary(WojennaKorona);
-// addBookToLibrary(SeventhSon);
-// addBookToLibrary(WojennaKorona);
-// addBookToLibrary(SeventhSon);
-// addBookToLibrary(WojennaKorona);
 
 
 
@@ -255,10 +243,28 @@ function filledChecker (){
     }
 }
 
-function removeUncheckedStatuses(){
+document.querySelectorAll("input").forEach(element => {
+    element.addEventListener('click',()=>{
+        filledChecker ()
+    })
+})
+
+
+radioBox.addEventListener('click',()=>{
+    filledChecker();
+})
+
+function clearFormFields(){
     for (i=0;i<arguments.length;i++){
         arguments[i].classList.remove("unfilled");
         arguments[i].classList.remove("unfilled-radio");
+        if (arguments[i].getAttribute('id')==="radioset"){
+            radioBox.reset();
+        }
+        else {
+            arguments[i].value="";
+        }
+        console.log(arguments)
     }
 }
 
@@ -271,7 +277,7 @@ newButton.addEventListener('click',()=>{
     }
     else if (!somethingMissing){
         let newBook = new book(`${titleArea.value}`, `${authorArea.value}`, `${Number(pagesArea.value)}`, radio);
-        removeUncheckedStatuses(titleArea, authorArea, pagesArea, radioBox);
+        clearFormFields(titleArea, authorArea, pagesArea, radioBox);
         addBookToLibrary(newBook);
         displayBook (newBook);
         updateLocalStorage();//add new book to localstorage
