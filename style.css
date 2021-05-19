@@ -77,9 +77,9 @@ a {
 }
 
 .book-card{
-    /* height:160px;*/
+
     margin: 20px;
-    /* border: black 1px solid;*/
+    position:relative;
     border-radius: 10px; 
     text-align: center;
     background: white;
@@ -195,6 +195,7 @@ input[type=number] {
 }
 
 .area {
+    border:none;
     border-bottom: white 1px dotted ;
     /* background:rgb(150, 143, 126); */
     background: #2c9fd1;
@@ -268,13 +269,14 @@ input:valid+.placeholder{
 
 }
 .mark-read-button{
-    position:relative;
-
+    position:absolute;
+    bottom:8px;
+    right:8px;
     font-size:small;
     outline: none;
     transition: all 0.3s ease-in;
 
-    /* żeby transition nie dotyczyło borderu */
+
 }
 
 .removal-button{
@@ -292,9 +294,9 @@ input:valid+.placeholder{
     border-radius: 20%; */
 }
 .removal-button:hover {
-    transform: rotate(180deg);
-    border: 1px solid black;
-    border-radius: 50%;
+    transform: rotate(360deg);
+    
+    
     font-weight: bold;
 
 }

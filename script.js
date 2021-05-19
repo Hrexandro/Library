@@ -10,7 +10,6 @@ change colors depedning on read or not read
 bugs:
 
 
-
 style
 sources:
 external code:
@@ -106,7 +105,7 @@ function displayBook (bookObject){
         <p>Author: ${bookObject.author}</p>
         <p>Pages: ${bookObject.pages}</p>
         <button class="mark-read-button">${bookObject.readDescription}</button>
-
+        <br><br>
         
     `
     // console.log(bookObject.ordinalNumber);
@@ -243,9 +242,19 @@ function filledChecker (){
     }
 }
 
+function currentInputElementChecker(element){//use with the event below to ensure input fields are checked themselves upon losing focus
+    if (element.value===""){
+        element.classList.add("unfilled")
+        somethingMissing=true;
+    }
+    else {
+        element.classList.remove("unfilled");
+    }
+}
+
 document.querySelectorAll("input").forEach(element => {
-    element.addEventListener('click',()=>{
-        filledChecker ()
+    element.addEventListener('focusout',(e)=>{
+        currentInputElementChecker(e.target)
     })
 })
 
@@ -268,6 +277,42 @@ function clearFormFields(){
     }
 }
 
+
+/*textbox.addEventListener(event, function() {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      } else {
+        this.value = "";
+      }
+    });
+  });
+}
+// Install input filters.
+setInputFilter(document.getElementById("intTextBox"), function(value) {
+  return /^-?\d*$/.test(value); });
+*/
+function ensureNumbers(field){//if characters typed into the pages field not numbers, nothing is typed
+    ["input", "keydown", "keyup"].forEach((action)=>{
+        field.addEventListener(`${action}`,(e)=>{
+            console.log(e.key);
+            console.log(e.keyCode);
+            console.log(e.key.length)
+
+            if (!/^-?\d*$/.test(String.fromCharCode(e.keyCode))&&e.key.length==1){//length 1 ensures that keys like backspace or tab still work
+                e.returnValue = false;
+            }
+        })
+    })
+}
+
+ensureNumbers(pagesArea)
+
+
 newButton.addEventListener('click',()=>{
     somethingMissing=false;
     filledChecker();
@@ -276,6 +321,12 @@ newButton.addEventListener('click',()=>{
         return;
     }
     else if (!somethingMissing){
+        console.log(Number(pagesArea.value));
+        console.log(pagesArea.value);
+        if (isNaN(Number(pagesArea.value))){
+            pagesArea.value=0;
+            console.log(pagesArea.value);
+        }
         let newBook = new book(`${titleArea.value}`, `${authorArea.value}`, `${Number(pagesArea.value)}`, radio);
         clearFormFields(titleArea, authorArea, pagesArea, radioBox);
         addBookToLibrary(newBook);
