@@ -294,7 +294,7 @@ function updateLocalStorage() {
 
 function addRemovalListener(button){
     button.addEventListener('click',(e)=>{
-        let DOMholder=e.path[1]//holds the DOM to be able to refer to it in the transitionend event
+        let DOMholder=e.target.parentNode;//holds the DOM to be able to refer to it in the transitionend event
         console.log(DOMholder)
         console.log(DOMholder.getAttribute('data-ordinal'))
         console.log(myLibrary.findIndex((obj)=>{
@@ -320,17 +320,15 @@ function addRemovalListener(button){
 
 function addReadToggleListener(button){
     button.addEventListener('click',(e)=>{
-        console.log(e.path[1].getAttribute('data-ordinal'));
         let currentBook =  myLibrary.find((obj)=>{
-            return obj.ordinalNumber==Number(e.path[1].getAttribute('data-ordinal'));
+            return obj.ordinalNumber==Number(e.target.parentNode.getAttribute('data-ordinal'));
             
             })
         console.log(currentBook.read);
         currentBook.read=!currentBook.read;
         checkDescription(currentBook)//makes sure the description matches the read state
-        console.log(currentBook.read);
-        console.log(toggleReadDOM(e.path[1]))
-        toggleReadDOM(e.path[1])
+  
+        toggleReadDOM(e.target.parentNode)
         updateLocalStorage();//update the localstorage also
         updateCounters();
         
