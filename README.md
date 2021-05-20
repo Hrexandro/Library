@@ -8,14 +8,20 @@ Features
 - Toggling the whether the book has been already read.
 - The data is stored in Local Storage.
 - Books are displayed as "cards" which you can sort, according to:
+
 	*title
+
 	*author
+
 	*insertion
+
 	*length
+
 	*read status
+
 - The current number of read, unread and total books is displayed in the bottom left corner.
 
-####Comment
+#### Comment
 
 Rally had fun with this project! It enabled me to practice styling, managing input, making the page look and feel intuitive and responsive. Learned a lot about compatibility, as I made my best to make the app look presentable and work as intended on various browsers, including on mobile. Noticed a big improvement in fluency with HTML/CSS/JS while doing it.
 
