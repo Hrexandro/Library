@@ -7,7 +7,7 @@ Features
 - Adding books and deleting existing ones.
 - Toggling the whether the book has been already read.
 - The data is stored in Local Storage.
-- Books are displayed as "cards" which you can sort, according to:
+- Books are displayed as "cards" which you can sort (ascending or descending), according to:
 
 	* title
 
