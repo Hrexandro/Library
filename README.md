@@ -9,15 +9,15 @@ Features
 - The data is stored in Local Storage.
 - Books are displayed as "cards" which you can sort, according to:
 
-	*title
+	* title
 
-	*author
+	* author
 
-	*insertion
+	* insertion
 
-	*length
+	* length
 
-	*read status
+	* read status
 
 - The current number of read, unread and total books is displayed in the bottom left corner.
 
