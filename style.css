@@ -6,80 +6,85 @@
 }
 
 body {
-    margin:0;
-    display:grid;
+    margin: 0;
+    display: grid;
     grid-template-columns: 1fr 7fr;
-    column-gap:0px;
-    height:100vh; 
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, 'Noto Sans Symbols 2'; 
+    column-gap: 0px;
+    height: 100vh;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, 'Noto Sans Symbols 2';
 }
 
-
-#counters{
+#counters {
     position: absolute;
-    top:84vh;
-
+    top: 88vh;
 }
-#card-background{
+
+
+/* * {
+    outline: 1px solid #f00 !important;
+} */
+
+.counter {
+    margin: 0;
+}
+
+#card-background {
     background: #f8d14c;
 }
 
-#info{
-    font-size:17px;
-    margin-top:8px;
+#info {
+    font-size: 1em;
+    margin-top: 8px;
 }
 
-#description{
-
-    opacity:0;
-}
-
-#info:hover + #description{
-    opacity:1;
-    font-size:0.85vmax;
+#description {
+    opacity: 0;
+    /* font-size: 1.35vh; this is visible without resizing other parts*/
+    font-size: 1.5vh;
     pointer-events: none;
-    text-align:justify;
-    padding:20px;
-    margin-right:10px;
-    display:block;
+    text-align: justify;
+    padding: 2vh;
+    display: block;
     background: white;
     border-radius: 10px;
-    color:#1a6180;
+    color: #1a6180;
+}
+
+#info:hover+#description {
+    opacity: 1;
 }
 
 a {
-    color:white;
+    color: white;
 }
 
-#links{
-    font-size:14px;
-    margin-top:0;
-    margin-bottom:14px;
+#links {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 14px;
 }
 
-#book-cards{
-    display:grid;
+#book-cards {
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 300px));
     row-gap: 30px;
-    column-gap:40px;
+    column-gap: 40px;
 }
 
-.book-card{
-
+.book-card {
     margin: 20px;
-    position:relative;
-    border-radius: 10px; 
+    position: relative;
+    border-radius: 10px;
     text-align: center;
     background: white;
-    color:#1a6180;
+    color: #1a6180;
     animation: slide-up 0.4s ease;
     transition: all 0.2s ease;
-
 }
 
 .book-card.disappearing {
     transform: translateY(20px);
-    opacity:0;
+    opacity: 0;
 }
 
 @keyframes slide-up {
@@ -93,147 +98,151 @@ a {
     }
 }
 
-#book-icon{
-    width:4vw;
+#book-icon {
+    width: 4vw;
     min-width: 55px;
-    margin:0;
+    margin: 0;
 }
 
-h1{
+h1 {
     display: flex;
-    margin-bottom:0;
-    align-items:center;
-    font-family:bitter, sans-serif;
-    font-size:calc(13px + 1vw);
+    margin-bottom: 0;
+    align-items: center;
+    font-family: bitter, sans-serif;
+    font-size: calc(13px + 1vw);
 }
 
-#new{
-    width:80px;
-    margin-top:20px;
-    padding:3px;
-    background:white;
+#new {
+    width: 80px;
+    margin-top: 10px;
+    padding: 3px;
+    background: white;
     border: none;
-    border-radius:21px;;
-    color:#1a6180;
+    border-radius: 21px;
+    font-size: 85%;
+    color: #1a6180;
     outline: none;
 }
 
-select{
-    margin-top:5px;
-    padding:3px;
-    background:white;
+select {
+    margin-top: 5px;
+    padding: 3px;
+    background: white;
     border: none;
-    border-radius:21px;;
-    color:#1a6180;
+    border-radius: 21px;
+    ;
+    color: #1a6180;
     outline: none;
-    -moz-appearance: none; 
+    -moz-appearance: none;
     text-indent: 1px;
     text-overflow: '';
 }
+
 #formbar {
-    padding-left:10px;
-    padding-right:5px;
-    height:100%;
+    padding-left: 10px;
+    padding-right: 5px;
+    height: 100%;
     background: #2c9fd1;
-    color:white;
+    color: white;
+    font-size: 0.9em;
 }
+
 #forms {
-    top: 5px;
-    position:sticky;
+    top: 0px;
+    position: sticky;
 }
 
 #radioset {
-    height:50px;
+    height: 50px;
     width: 50px;
 }
 
 .area {
-    border:none;
-    border-bottom: white 1px dotted ;
+    border: none;
+    border-bottom: white 1px dotted;
     background: #2c9fd1;
     outline: none;
     color: white;
-    margin-top:7px;
+    margin-top: 7px;
 }
-input[type=text]{
-    height:18px;
+
+input[type=text] {
+    height: 1.4em;
     overflow: hidden;
-    width:60%;
-    resize:none;
-    border:none;
-    border-bottom: white 1px dotted ;
-
+    width: 60%;
+    resize: none;
+    border: none;
+    border-bottom: white 1px dotted;
 }
 
-.placeholder{
-    margin-top:7px;
-    position:absolute;
-    left:0;
+.placeholder {
+    margin-top: 7px;
+    position: absolute;
+    left: 0;
     transition: all 0.5s;
-    font-size:18px;
-    pointer-events: none;  /* stops from selecting the placeholder text in the input fields */
+    font-size: 1.2em;
+    pointer-events: none;
+    /* stops from selecting the placeholder text in the input fields */
 }
 
 input:focus+.placeholder,
-input:valid+.placeholder{
-    position:absolute;
-    left:0;
+input:valid+.placeholder {
+    position: absolute;
+    left: 0;
     transform: scale(0.9) translateY(-19px);
     color: white;
-}   
-
-#sorting{
-    margin-top:10px;
 }
 
-#pages-area{
-    width:40%;
-    height:20px;
+#sorting {
+    margin-top: 10px;
 }
 
-.unfilled+.placeholder{
+#pages-area {
+    width: 40%;
+    height: 20px;
+}
+
+.unfilled+.placeholder {
     color: red;
 }
 
-.unfilled{
+.unfilled {
     border-bottom: red 1px dotted !important;
 }
-    
-.unfilled-radio{
-    color:red;
+
+.unfilled-radio {
+    color: red;
 }
 
-.mark-read-button, .removal-button {
-    float:right;
-    margin:5px;
+.mark-read-button,
+.removal-button {
+    float: right;
+    margin: 5px;
     background: none;
     border: none;
     outline: none;
-    color:#1a6180;
-
+    color: #1a6180;
 }
-.mark-read-button{
-    position:absolute;
-    bottom:8px;
-    right:8px;
-    font-size:small;
+
+.mark-read-button {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: small;
     outline: none;
     transition: all 0.3s ease-in;
-
-
 }
 
-.removal-button{
-    font-size:medium;
+.removal-button {
+    font-size: medium;
     transition: all 0.1s;
-
-    
 }
 
-.mark-read-button:hover{
+.mark-read-button:hover {
     transform: translateX(-3px);
-    color:rgb(90, 90, 90);
+    color: rgb(90, 90, 90);
 }
+
 .removal-button:hover {
     transform: rotate(360deg);
     font-weight: bold;

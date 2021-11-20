@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Library</title>
@@ -9,33 +10,34 @@
     <link rel="icon" href="images/book.png">
 
 </head>
+
 <body>
     <div id="formbar">
         <div id="forms">
             <h1><img id="book-icon" src="images/book.png" alt="two books, one lying upon another"></img>MY LIBRARY</h1>
-           <p id="links">made by <a href="https://github.com/Hrexandro">Hrexandro</a> | <a href="https://github.com/Hrexandro/Library">Source</a></p>
-            <br>
-            <input class="area" type='text' id="title-area" maxlength = "34" required></input>
+            <p id="links">made by <a href="https://github.com/Hrexandro">Hrexandro</a> | <a href="https://github.com/Hrexandro/Library">Source</a></p>
+
+            <input class="area" type='text' id="title-area" maxlength="34" required></input>
             <span class="placeholder" id="title-placeholder">Book title</span>
             <br>
             <br>
-            <input class="area" type='text' id="author-area" maxlength = "34" required></input>
+            <input class="area" type='text' id="author-area" maxlength="34" required></input>
             <span class="placeholder" id="author-placeholder">Author</span>
             <br>
             <br>
-            <input class="area"  id='pages-area' maxlength = "12" required></input>
+            <input class="area" id='pages-area' maxlength="12" required></input>
             <span class="placeholder" id="pages-placeholder">Pages</span>
             <p>Have you read it?</p>
             <form id="radioset">
-            <input class="readingcheck" type="radio" id="read" name="read-status" value="read"><label for="read">Yes</label><br>
-            <input class="readingcheck" type="radio" id="notread" name="read-status" value="notread"><label for="notread">No</label><br>
+                <input class="readingcheck" type="radio" id="read" name="read-status" value="read"><label for="read">Yes</label><br>
+                <input class="readingcheck" type="radio" id="notread" name="read-status" value="notread"><label for="notread">No</label><br>
             </form>
             <button id="new">New Book</button><br>
-            <br>
-            <br>
+
+
             <div id="sorting">
-            <label for="sort">Sort cards by:</label><br>
-            <select name="sort" id="sort">
+                <label for="sort">Sort cards by:</label><br>
+                <select name="sort" id="sort">
                 <option selected disabled hidden style='display: none'>select</option>
                 <option value="title">title</option>
                 <option value="author">author</option>
@@ -43,22 +45,21 @@
                 <option value="pages">length</option>
                 <option value="readDescription">read status</option>
               </select>
-              <select name="order" id="order">
+                <select name="order" id="order">
                 <option selected disabled hidden style='display: none'>order</option>
                 <option value="ascending">ascending</option>
                 <option value="descending">descending</option>
               </select>
             </div>
             <p id="info">🛈 description</p>
-            <p id="description">This library app lets you store and modify a list of books, 
-                toggle their status as read or unread and sort them according to various criteria. 
-                It maintains a count of all the books in real-time and uses Local Storage to store the data for future use.
+            <p id="description">This library app lets you store and modify a list of books, toggle their status as read or unread and sort them according to various criteria. It maintains a count of all the books in real-time and uses Local Storage to store the data for
+                future use.
             </p>
 
-             <div id="counters">
-              <p>Books read:<span id="read-book-counter"></span></p>
-              <p>Books unread:<span id="unread-book-counter"></span></p>
-              <p>Total books:<span id="book-counter"></span></p>
+            <div id="counters">
+                <p class="counter">Books read:<span id="read-book-counter"></span></p>
+                <p class="counter">Books unread:<span id="unread-book-counter"></span></p>
+                <p class="counter">Total books:<span id="book-counter"></span></p>
             </div>
         </div>
     </div>
@@ -71,4 +72,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
